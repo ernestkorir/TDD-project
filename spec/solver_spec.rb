@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rspec'
 require_relative '../solver'
 
@@ -25,20 +27,38 @@ RSpec.describe Solver do
   end
 
   describe '#fizzbuzz' do
-    it 'returns "fizz" when the number is divisible by 3' do
-      expect(solver.fizzbuzz(9)).to eq('fizz')
+    context 'when the number is divisible by 3' do
+      it 'returns "fizz"' do
+        expect(subject.fizzbuzz(3)).to eq('fizz')
+        expect(subject.fizzbuzz(9)).to eq('fizz')
+        expect(subject.fizzbuzz(12)).to eq('fizz')
+      end
     end
 
-    it 'returns "buzz" when the number is divisible by 5' do
-      expect(solver.fizzbuzz(10)).to eq('buzz')
+    context 'when the number is divisible by 5' do
+      it 'returns "buzz"' do
+        expect(subject.fizzbuzz(5)).to eq('buzz')
+        expect(subject.fizzbuzz(10)).to eq('buzz')
+        expect(subject.fizzbuzz(20)).to eq('buzz')
+      end
+    end
+  end
+
+  describe '#fizzbuzz' do
+    context 'when the number is divisible by both 3 and 5' do
+      it 'returns "fizzbuzz"' do
+        expect(subject.fizzbuzz(15)).to eq('fizzbuzz')
+        expect(subject.fizzbuzz(30)).to eq('fizzbuzz')
+        expect(subject.fizzbuzz(45)).to eq('fizzbuzz')
+      end
     end
 
-    it 'returns "fizzbuzz" when the number is divisible by 3 and 5' do
-      expect(solver.fizzbuzz(15)).to eq('fizzbuzz')
-    end
-
-    it 'returns the number as a string for any other case' do
-      expect(solver.fizzbuzz(7)).to eq('7')
+    context 'when the number is neither divisible by 3 nor 5' do
+      it 'returns the number' do
+        expect(subject.fizzbuzz(7)).to eq('7')
+        expect(subject.fizzbuzz(13)).to eq('13')
+        expect(subject.fizzbuzz(17)).to eq('17')
+      end
     end
   end
 end
