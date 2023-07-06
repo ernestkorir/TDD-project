@@ -17,8 +17,12 @@ RSpec.describe Solver do
   end
 
   describe '#reverse' do
+    it 'returns the reversed word' do
+      expect(subject.reverse('hello')).to eq('olleh')
+      expect(subject.reverse('ruby')).to eq('ybur')
+      expect(subject.reverse('openai')).to eq('ianepo')
+    end
   end
-
 
   describe '#fizzbuzz' do
   end
