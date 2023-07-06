@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Solver
   def factorial(num)
     raise ArgumentError, 'Negative integer not allowed' if num.negative?
